@@ -1,0 +1,10 @@
+{
+  "text_file": "text.txt",
+  "encrypted": "encrypted.txt",
+  "decrypted": "decrypted.txt",
+  "symmetric_key": "symmetric_key.txt",
+  "symmetric_key_dec": "symmetric_key_dec.txt",
+  "public": "public.pem",
+  "private": "private.pem",
+  "size": "256"
+}
