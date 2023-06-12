@@ -1,10 +1,10 @@
 {
-  "text_file": "text.txt",
-  "encrypted": "encrypted.txt",
-  "decrypted": "decrypted.txt",
-  "symmetric_key": "symmetric_key.txt",
-  "symmetric_key_dec": "symmetric_key_dec.txt",
-  "public": "public.pem",
-  "private": "private.pem",
+  "text_file": "./dec/text.txt",
+  "encrypted": "./enc/encrypted.txt",
+  "decrypted": "./dec/decrypted.txt",
+  "symmetric_key": "./enc/symmetric_key.txt",
+  "symmetric_key_dec": "./dec/symmetric_key_dec.txt",
+  "public": "./enc/public.pem",
+  "private": "./enc/private.pem",
   "size": "256"
 }

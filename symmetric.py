@@ -6,13 +6,14 @@ from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
+
 class symmetric:
     """
     Класс для генерации симметрчного ключа, использует AES-шифрование
     Размер ключа в битах: 128,192 или 256
     """
 
-    def __init__(self, size:int, key:str, decrypted:str = None, encrypted:str = None) -> None:
+    def __init__(self, size: int, key: str, decrypted: str = None, encrypted: str = None) -> None:
         """
         запись путей в поля класса
         :param size: размер ключа
@@ -39,7 +40,7 @@ class symmetric:
                 f"Ошибка открытия файла: {self.key}"
             )
 
-    def add_encrypted(self, text:bytes) -> None:
+    def add_encrypted(self, text: bytes) -> None:
         """
         Запись зашифрованного текста в файл
         :param text: текст
@@ -96,7 +97,7 @@ class symmetric:
         """
         padd = padding.ANSIX923(AES.block_size).padder()
         text = bytes(_str, "UTF-8")
-        padd_text = padd.update(text)+padd.finalize()
+        padd_text = padd.update(text) + padd.finalize()
         return padd_text
 
     def encryption(self) -> None:

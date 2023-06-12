@@ -29,6 +29,7 @@ def get_arg():
                       help="Зашифровать данные")
     pars.add_argument("-dec", "--decryption", action="store_true",
                       help="Расшифровать данные")
+    pars.add_argument("-j", "--json", action="store", type=str, help="Json-file")
     _args = pars.parse_args()
     return _args
 
@@ -55,8 +56,9 @@ def config_file(name: str) -> str:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     args = get_arg()
-    mode = (args.generation, args.encryption, args.decryption)
-    sett = config_file("paths.json")
+    mode = (args.generation, args.encryption, args.decryption, args.json)
+    sett = config_file(args.json)
+
     size = int(sett["size"])
     size, correct = check_size(size)
     if not correct:
