@@ -1,5 +1,5 @@
-from assymetric import assymetric
-from symmetric import symmetric
+from asymmetric import Asymmetric
+from symmetric import Symmetric
 
 
 def encrypt(_decrypted: str, private_key: str, symmetric_key: str, encrypted: str, symmetric_dec_key,
@@ -14,9 +14,9 @@ def encrypt(_decrypted: str, private_key: str, symmetric_key: str, encrypted: st
     :param size: размер ключа
     :return: None
     """
-    assym = assymetric(private=private_key, decrypted=symmetric_dec_key, encrypted=symmetric_key)
+    assym = Asymmetric(private=private_key, decrypted=symmetric_dec_key, encrypted=symmetric_key)
     assym.decryption()
-    sym = symmetric(size, symmetric_dec_key, _decrypted, encrypted)
+    sym = Symmetric(size, symmetric_dec_key, _decrypted, encrypted)
     sym.encryption()
 
 
@@ -32,13 +32,13 @@ def decrypt(encrypted: str, private_key: str, symmetric_key: str, _decrypted, sy
     :param size: размер ключа
     :return: None
     """
-    assym = assymetric(private=private_key, decrypted=symmetric_dec_key, encrypted=symmetric_key)
+    assym = Asymmetric(private=private_key, decrypted=symmetric_dec_key, encrypted=symmetric_key)
     assym.decryption()
-    sym = symmetric(size, symmetric_dec_key, _decrypted, encrypted)
+    sym = Symmetric(size, symmetric_dec_key, _decrypted, encrypted)
     sym.decryption()
 
 
-def key_gener(private: str, public: str, symmetric_key: str, symmetric_dec_key: str, size: int) -> None:
+def key_generation(private: str, public: str, symmetric_key: str, symmetric_dec_key: str, size: int) -> None:
     """
     генерация ключей
     :param private: путь к закрытому ключу
@@ -48,10 +48,10 @@ def key_gener(private: str, public: str, symmetric_key: str, symmetric_dec_key: 
     :param size: размер ключа
     :return: None
     """
-    assym = assymetric(public, private, symmetric_dec_key, symmetric_key)
+    assym = Asymmetric(public, private, symmetric_dec_key, symmetric_key)
     assym.key_generation()
 
-    symm = symmetric(size, symmetric_dec_key)
+    symm = Symmetric(size, symmetric_dec_key)
     symm.generate()
 
     assym.encryption()

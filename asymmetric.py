@@ -5,7 +5,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives.serialization import load_pem_private_key, load_pem_public_key
 
 
-class assymetric:
+class Asymmetric:
     """
     Класс для генерации ассиметричных ключей
     """

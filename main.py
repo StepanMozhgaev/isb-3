@@ -3,7 +3,7 @@ import json
 import logging
 import os
 
-from enc_dec import key_gener, encrypt, decrypt
+from enc_dec import key_generation, encrypt, decrypt
 
 
 def check_size(size: int):
@@ -57,9 +57,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     args = get_arg()
     mode = (args.generation, args.encryption, args.decryption, args.json)
-    sett = config_file(args.json)
+    settings = config_file(args.json)
 
-    size = int(sett["size"])
+    size = int(settings["size"])
     size, correct = check_size(size)
     if not correct:
         logging.info("Размер ключа некорректный, уставновлен стандартный(128)")
@@ -67,15 +67,15 @@ if __name__ == "__main__":
         logging.info(f"Размер ключa: {size * 8}")
 
     logging.info("Генерация ключей \n ---------->")
-    key_gener(sett["private"], sett["public"], sett["symmetric_key"], sett["symmetric_key_dec"], size)
+    key_generation(settings["private"], settings["public"], settings["symmetric_key"], settings["symmetric_key_dec"], size)
     logging.info("Ключи сгенерированны")
 
     logging.info("Шифрование: \n ------>")
-    encrypt(sett["text_file"], sett["private"], sett["symmetric_key"], sett["encrypted"],
-            sett["symmetric_key_dec"], size)
+    encrypt(settings["text_file"], settings["private"], settings["symmetric_key"], settings["encrypted"],
+            settings["symmetric_key_dec"], size)
     logging.info("Данные зашифрованы")
 
     logging.info("Дешифрование: \n ------->")
-    decrypt(sett["encrypted"], sett["private"], sett["symmetric_key"], sett["decrypted"],
-            sett["symmetric_key_dec"], size)
+    decrypt(settings["encrypted"], settings["private"], settings["symmetric_key"], settings["decrypted"],
+            settings["symmetric_key_dec"], size)
     logging.info("Данные расшифрованы")

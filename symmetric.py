@@ -7,7 +7,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
 
-class symmetric:
+class Symmetric:
     """
     Класс для генерации симметрчного ключа, использует AES-шифрование
     Размер ключа в битах: 128,192 или 256
